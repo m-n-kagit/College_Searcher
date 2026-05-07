@@ -1,0 +1,14 @@
+import { Router } from 'express';
+import * as savedController from '../controller/saved.controller';
+import { protect } from '../middleware/auth.middleware';
+
+const router = Router();
+
+// All routes here require being logged in
+router.use(protect);
+
+router.get('/', savedController.getMySavedItems);
+router.post('/:collegeId', savedController.addToSaved);
+router.delete('/:collegeId/remove', savedController.removeFromSaved);
+
+export default router;

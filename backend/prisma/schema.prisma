@@ -12,8 +12,6 @@ datasource db {
   provider = "postgresql"
 }
 
-
-
 // ======================
 // COLLEGE
 // ======================

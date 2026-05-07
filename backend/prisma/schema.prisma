@@ -1,0 +1,151 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Get a free hosted Postgres database in seconds: `npx create-db`
+
+generator client {
+  provider = "prisma-client"
+  output   = "../generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+
+
+// ======================
+// COLLEGE
+// ======================
+model College {
+  id            String     @id @default(cuid())
+  name          String
+  location      String
+  description   String?
+  overallRating Float      @default(0)
+  isActive      Boolean    @default(true)
+
+  // Relations
+  courses       Course[]
+  savedBy       SavedItem[]
+  reviews       Review[]
+
+  createdAt     DateTime   @default(now())
+
+  @@index([name])
+  @@index([location])
+}
+
+// ======================
+// COURSE
+// ======================
+model Course {
+  id         String      @id @default(cuid())
+  name       String
+  fees       Int
+  duration   Int
+  collegeId  String
+  isActive   Boolean     @default(true)
+
+  college    College     @relation(fields: [collegeId], references: [id])
+
+  // Relations
+  placements Placement[]
+  reviews    Review[]
+  cutoffs    Cutoff[]
+
+  createdAt  DateTime    @default(now())
+
+  @@index([collegeId])
+  @@unique([collegeId, name]) // Prevent duplicate course in same college
+}
+
+// ======================
+// PLACEMENT (COURSE LEVEL)
+// ======================
+model Placement {
+  id             String   @id @default(cuid())
+  year           Int
+  avgPackage     Float
+  highestPackage Float
+  courseId       String
+
+  course         Course   @relation(fields: [courseId], references: [id])
+
+  createdAt      DateTime @default(now())
+
+  @@index([courseId])
+}
+
+// ======================
+// REVIEW (USER-BASED)
+// ======================
+model Review {
+  id         String   @id @default(cuid())
+  rating     Int      // Validate in backend: 1–5
+  comment    String
+
+  userId     String
+  courseId   String?
+  collegeId  String?
+
+  user       User     @relation(fields: [userId], references: [id])
+  course     Course?  @relation(fields: [courseId], references: [id])
+  college    College? @relation(fields: [collegeId], references: [id])
+
+  createdAt  DateTime @default(now())
+
+  @@index([userId])
+  @@index([courseId])
+  @@index([collegeId])
+}
+
+// ======================
+// CUTOFF (COURSE LEVEL)
+// ======================
+model Cutoff {
+  id          String   @id @default(cuid())
+  examName    String
+  closingRank Int
+  category    String
+
+  courseId    String
+  course      Course   @relation(fields: [courseId], references: [id])
+
+  createdAt   DateTime @default(now())
+
+  @@index([courseId])
+}
+
+// ======================
+// USER (AUTH)
+// ======================
+model User {
+  id        String      @id @default(cuid())
+  email     String      @unique
+  password  String
+  isActive  Boolean     @default(true)
+
+  saved     SavedItem[]
+  reviews   Review[]
+
+  createdAt DateTime    @default(now())
+}
+
+// ======================
+// SAVED ITEMS (MANY-TO-MANY)
+// ======================
+model SavedItem {
+  id         String   @id @default(cuid())
+  userId     String
+  collegeId  String
+
+  user       User     @relation(fields: [userId], references: [id])
+  college    College  @relation(fields: [collegeId], references: [id])
+
+  createdAt  DateTime @default(now())
+
+  @@unique([userId, collegeId]) // Prevent duplicate saves
+  @@index([userId])
+  @@index([collegeId])
+}

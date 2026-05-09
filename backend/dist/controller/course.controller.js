@@ -1,4 +1,4 @@
-import * as courseService from '../services/course.service.js';
+import * as courseService from '../services/course.service';
 const getIdFromParams = (req) => String(req.params?.id ?? '').trim();
 export const getCourseDetails = async (req, res) => {
     try {

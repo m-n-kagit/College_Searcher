@@ -1,4 +1,4 @@
-import * as authService from '../services/auth.service.js';
+import * as authService from '../services/auth.service';
 const COOKIE_OPTIONS = {
     httpOnly: true, // Prevents JS access
     secure: process.env.NODE_ENV === 'production', // Use HTTPS in production

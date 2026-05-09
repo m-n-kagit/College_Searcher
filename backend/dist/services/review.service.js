@@ -1,4 +1,4 @@
-import { prisma } from '../lib/prisma.js';
+import { prisma } from '../lib/prisma';
 export const createReview = async (userId, data) => {
     return await prisma.review.create({
         data: {

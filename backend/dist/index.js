@@ -18,13 +18,13 @@ app.use(cors({
 // Routes
 // ----------------------
 // import routes from "./routes";
-import authRoutes from "./routes/auth.routes.js";
-import collegeRouter from "./routes/college.routes.js";
-import courseRouter from "./routes/course.routes.js";
-import reviewRouter from "./routes/review.routes.js";
-import savedRoutes from './routes/saved.routes.js';
-import compareRoutes from './routes/compare.routes.js';
-import predictorRoutes from './routes/predictor.routes.js';
+import authRoutes from "./routes/auth.routes";
+import collegeRouter from "./routes/college.routes";
+import courseRouter from "./routes/course.routes";
+import reviewRouter from "./routes/review.routes";
+import savedRoutes from './routes/saved.routes';
+import compareRoutes from './routes/compare.routes';
+import predictorRoutes from './routes/predictor.routes';
 app.use("/api/v1/auth", authRoutes);
 app.use('/api/v1/colleges', collegeRouter);
 app.use('/api/v1/courses', courseRouter);

@@ -1,4 +1,4 @@
-import { prisma } from '../lib/prisma.js';
+import { prisma } from '../lib/prisma';
 export const getSavedColleges = async (userId) => {
     // We query the SavedItem table and "include" the college details
     const savedItems = await prisma.savedItem.findMany({

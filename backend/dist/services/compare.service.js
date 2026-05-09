@@ -1,4 +1,4 @@
-import { prisma } from '../lib/prisma.js';
+import { prisma } from '../lib/prisma';
 export const compareColleges = async (collegeIds) => {
     if (!collegeIds || collegeIds.length === 0) {
         throw new Error('No college IDs provided for comparison');

@@ -1,4 +1,4 @@
-import * as compareService from '../services/compare.service.js';
+import * as compareService from '../services/compare.service';
 export const handleComparison = async (req, res) => {
     try {
         const { ids } = req.query;

@@ -1,4 +1,4 @@
-import * as predictorService from '../services/predictor.service.js';
+import * as predictorService from '../services/predictor.service';
 export const getCutoffs = async (req, res) => {
     try {
         const data = await predictorService.getAllCutoffs();

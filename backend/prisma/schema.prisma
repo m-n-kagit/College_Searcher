@@ -107,7 +107,7 @@ model Cutoff {
   examName    String
   closingRank Int
   category    String
-
+  year        Int
   courseId    String
   course      Course   @relation(fields: [courseId], references: [id])
 

@@ -1,4 +1,4 @@
-import { verifyToken } from '../utils/jwt.js';
+import { verifyToken } from '../utils/jwt';
 export const protect = (req, res, next) => {
     // Extract token from cookies
     const token = req.cookies.token;

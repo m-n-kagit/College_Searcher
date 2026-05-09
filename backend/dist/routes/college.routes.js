@@ -1,5 +1,5 @@
 import { Router } from 'express';
-import * as collegeController from '../controller/college.controller.js';
+import * as collegeController from '../controller/college.controller';
 const router = Router();
 // 1. List & Filter
 router.get('/', collegeController.getColleges);

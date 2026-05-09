@@ -96,6 +96,7 @@ export const CutoffScalarFieldEnum = {
     examName: 'examName',
     closingRank: 'closingRank',
     category: 'category',
+    year: 'year',
     courseId: 'courseId',
     createdAt: 'createdAt'
 };

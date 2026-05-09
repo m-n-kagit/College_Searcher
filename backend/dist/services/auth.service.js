@@ -1,6 +1,6 @@
-import { prisma } from '../lib/prisma.js';
-import { hashPassword, comparePassword } from '../utils/hash.js';
-import { generateToken } from '../utils/jwt.js';
+import { prisma } from '../lib/prisma';
+import { hashPassword, comparePassword } from '../utils/hash';
+import { generateToken } from '../utils/jwt';
 export const signup = async (data) => {
     const existingUser = await prisma.user.findUnique({ where: { email: data.email } });
     if (existingUser)

@@ -1,4 +1,4 @@
-import * as savedService from '../services/saved.service.js';
+import * as savedService from '../services/saved.service';
 const getUserIdFromReq = (req) => req.user?.userId ?? req.user?.id;
 export const getMySavedItems = async (req, res) => {
     try {

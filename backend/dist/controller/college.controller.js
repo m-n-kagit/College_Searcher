@@ -1,4 +1,4 @@
-import * as collegeService from '../services/college.service.js';
+import * as collegeService from '../services/college.service';
 export const getColleges = async (req, res) => {
     try {
         // Note: In routes, we'll validate req.query using our schema

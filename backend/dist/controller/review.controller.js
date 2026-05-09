@@ -1,4 +1,4 @@
-import * as reviewService from '../services/review.service.js';
+import * as reviewService from '../services/review.service';
 const getUserIdFromReq = (req) => req.user?.userId ?? req.user?.id;
 export const postReview = async (req, res) => {
     try {

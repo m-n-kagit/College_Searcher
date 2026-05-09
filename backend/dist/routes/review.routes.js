@@ -1,8 +1,8 @@
 import { Router } from 'express';
-import * as reviewController from '../controller/review.controller.js';
-import { protect } from '../middleware/auth.middleware.js';
-import { validate } from '../middleware/validate.middleware.js';
-import { createReviewSchema } from '../validations/review.validation.js';
+import * as reviewController from '../controller/review.controller';
+import { protect } from '../middleware/auth.middleware';
+import { validate } from '../middleware/validate.middleware';
+import { createReviewSchema } from '../validations/review.validation';
 const reviewRouter = Router();
 // Create a review (Protected)
 reviewRouter.post('/', protect, validate(createReviewSchema), reviewController.postReview);

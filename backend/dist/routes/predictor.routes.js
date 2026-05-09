@@ -1,7 +1,7 @@
 import { Router } from 'express';
-import * as predictorController from '../controller/predictor.controller.js';
-import { validate } from '../middleware/validate.middleware.js';
-import { predictorSchema } from '../validations/predictor.validation.js';
+import * as predictorController from '../controller/predictor.controller';
+import { validate } from '../middleware/validate.middleware';
+import { predictorSchema } from '../validations/predictor.validation';
 const router = Router();
 // General view of all cutoffs
 router.get('/cutoffs', predictorController.getCutoffs);

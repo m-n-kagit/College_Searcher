@@ -1,4 +1,4 @@
-import { prisma } from '../lib/prisma.js';
+import { prisma } from '../lib/prisma';
 export const getAllColleges = async (query) => {
     const { name, location, minFees, maxFees, page, limit } = query;
     const skip = (page - 1) * limit;
